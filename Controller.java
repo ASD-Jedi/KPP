@@ -28,6 +28,7 @@ public class Controller {
     }
 
     private void MapGenerator(){
+        mapCreator.createConstant(SizeX,SizeY);
         MainMap = mapCreator.map();
         for (ImageView i : MainMap
                 ) {
@@ -36,7 +37,7 @@ public class Controller {
     }
 
     public Scene sceneController() {
-
+        MapGenerator();
 
         return MainGame;
     }

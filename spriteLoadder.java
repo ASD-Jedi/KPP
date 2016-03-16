@@ -13,7 +13,6 @@ public class spriteLoadder {
         ImageView localCut = new ImageView(MainMAPTexture);
         int x = whichX * textSize;
         int y = whichY * textSize;
-
         Rectangle2D temp = new Rectangle2D(x, y, textSize, textSize);
         localCut.setViewport(temp);
         return localCut;

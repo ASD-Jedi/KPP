@@ -106,11 +106,13 @@ public class Settings {
                 Hight = 600;
             }
             MainLogic.sizeSet(Hight, Wight);
+
             edit.setScene(MainLogic.sceneController());
             edit.setX(screenH / 2 - 800 / 2);
             edit.setY(screenW / 2 - 600 / 2);
             edit.setWidth(Wight);
             edit.setHeight(Hight);
+            edit.show();
         });
 
         local.getChildren().addAll(baccker, ResLabel, setter, Resolution);

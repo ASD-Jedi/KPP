@@ -3,7 +3,6 @@ package sample;
 import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
-import java.util.Vector;
 
 
 public class mapStorage {
@@ -16,22 +15,88 @@ public class mapStorage {
     private int FifthLayer;
     private int screenResX;
     private int screenResY;
+    private int globalLn;
+    private int FirstLayerY;
+    private int SecondLayerY;
+    private int ThirdLayerY;
+    private int FourthLayerY;
+    private int FifthLayerY;
+    private int waterTime;
 
     public mapStorage() {
         TextureLoad = new spriteLoadder();
     }
 
-    public void createConstant(int gameResX, int gameResY){
+    public void createConstant(int gameResX, int gameResY) {
         screenResX = gameResX;
-        screenResY = gameResY;
-        layerLN = (screenResX/32)*4;
-        
-
+        screenResY = gameResY - 29;
+        layerLN = (screenResX / 32) * 4;
+        FirstLayer = layerLN;
+        SecondLayer = FirstLayer + layerLN;
+        ThirdLayer = SecondLayer + layerLN;
+        FourthLayer = ThirdLayer + layerLN;
+        FifthLayer = FourthLayer + layerLN;
+        globalLn = layerLN * 5;
+        FirstLayerY = screenResY - 32;
+        SecondLayerY = screenResY - 32 * 2;
+        ThirdLayerY = screenResY - 32 * 3;
+        FourthLayerY = screenResY - 32 * 4;
+        FifthLayerY = screenResY - 32 * 5;
+        waterTime = 0;
     }
+
 
     public ArrayList<ImageView> map() {
         ArrayList<ImageView> MapReturn = new ArrayList<>();
-/*
+        for (int i = 0; i < globalLn; i = i + 1) {
+            if (i < FirstLayer) {
+                MapReturn.add(TextureLoad.GetLoadMapText(3, 0));
+                MapReturn.get(i).setX(i * 32);
+                MapReturn.get(i).setY(FirstLayerY);
+                //System.out.println(MapReturn.get(i).getId());
+            }
+            if ((i >= FirstLayer) && (i < SecondLayer)) {
+                if ((waterTime > 14) && (waterTime < 20)) {
+                    MapReturn.add(TextureLoad.GetLoadMapText(15, 12));
+                    MapReturn.get(i).setX((i - FirstLayer) * 32);
+                    MapReturn.get(i).setY(SecondLayerY);
+                    if (waterTime >= 20)
+                        waterTime++;
+                    else
+                        waterTime = 0;
+                } else {
+                    if (((Math.random() + 17) < (Math.random() + 17)) && (waterTime > 14) && (waterTime < 20)) {
+                        MapReturn.add(TextureLoad.GetLoadMapText(15, 12));
+                        MapReturn.get(i).setX((i - FirstLayer) * 32);
+                        MapReturn.get(i).setY(SecondLayerY);
+                        if (waterTime >= 20)
+                            waterTime++;
+                        else
+                            waterTime = 0;
+                    } else {
+                        MapReturn.add(TextureLoad.GetLoadMapText(3, 0));
+                        MapReturn.get(i).setX((i - FirstLayer) * 32);
+                        MapReturn.get(i).setY(SecondLayerY);
+                        if (waterTime >= 20)
+                            waterTime++;
+                        else
+                            waterTime = 0;
+                    }
+                }
+            }
+            if ((i >= SecondLayer) && i < (ThirdLayer)) {
+
+            }
+            if ((i >= ThirdLayer) && (i < FourthLayer)) {
+
+            }
+            if ((i >= FourthLayer) && (i < FifthLayer)) {
+
+            }
+
+        }
+
+        /*
         for (int i = 0; i < FifthLayer; i = i + 1) {
             if (i < FirstLayer) {
                 MapReturn.add(TextureLoad.GetLoadMapText(2, 0));
@@ -59,7 +124,6 @@ public class mapStorage {
                 MapReturn.get(i).setY(440);
             }
         }*/
-
 
 
         return MapReturn;
