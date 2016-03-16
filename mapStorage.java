@@ -22,6 +22,7 @@ public class mapStorage {
     private int FourthLayerY;
     private int FifthLayerY;
     private int waterTime;
+    private boolean waterNow;
 
     public mapStorage() {
         TextureLoad = new spriteLoadder();
@@ -43,6 +44,7 @@ public class mapStorage {
         FourthLayerY = screenResY - 32 * 4;
         FifthLayerY = screenResY - 32 * 5;
         waterTime = 0;
+        waterNow = false;
     }
 
 
@@ -50,37 +52,40 @@ public class mapStorage {
         ArrayList<ImageView> MapReturn = new ArrayList<>();
         for (int i = 0; i < globalLn; i = i + 1) {
             if (i < FirstLayer) {
-                MapReturn.add(TextureLoad.GetLoadMapText(3, 0));
+                MapReturn.add(TextureLoad.GetLoadMapText(2, 0));
                 MapReturn.get(i).setX(i * 32);
                 MapReturn.get(i).setY(FirstLayerY);
                 //System.out.println(MapReturn.get(i).getId());
             }
             if ((i >= FirstLayer) && (i < SecondLayer)) {
-                if ((waterTime > 14) && (waterTime < 20)) {
+
+                if (waterNow) {
                     MapReturn.add(TextureLoad.GetLoadMapText(15, 12));
                     MapReturn.get(i).setX((i - FirstLayer) * 32);
                     MapReturn.get(i).setY(SecondLayerY);
-                    if (waterTime >= 20)
-                        waterTime++;
-                    else
+                    if (waterTime >= 11) {
                         waterTime = 0;
+                        waterNow = false;
+                    } else
+                        waterTime++;
                 } else {
-                    if (((Math.random() + 17) < (Math.random() + 17)) && (waterTime > 14) && (waterTime < 20)) {
+                    if (((Math.random() + 17) < (Math.random() + 17)) && (waterTime > 7) && (waterTime < 11) && waterNow == false) {
                         MapReturn.add(TextureLoad.GetLoadMapText(15, 12));
                         MapReturn.get(i).setX((i - FirstLayer) * 32);
                         MapReturn.get(i).setY(SecondLayerY);
-                        if (waterTime >= 20)
-                            waterTime++;
-                        else
+                        waterNow = true;
+                        if (waterTime >= 11)
                             waterTime = 0;
+                        else
+                            waterTime++;
                     } else {
-                        MapReturn.add(TextureLoad.GetLoadMapText(3, 0));
+                        MapReturn.add(TextureLoad.GetLoadMapText(2, 0));
                         MapReturn.get(i).setX((i - FirstLayer) * 32);
                         MapReturn.get(i).setY(SecondLayerY);
-                        if (waterTime >= 20)
-                            waterTime++;
-                        else
+                        if (waterTime >= 11)
                             waterTime = 0;
+                        else
+                            waterTime++;
                     }
                 }
             }
