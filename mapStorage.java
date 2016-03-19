@@ -3,6 +3,8 @@ package sample;
 import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.regex.Matcher;
 
 
 public class mapStorage {
@@ -23,6 +25,7 @@ public class mapStorage {
     private int FifthLayerY;
     private int waterTime;
     private boolean waterNow;
+    private boolean globalWater;
 
     public mapStorage() {
         TextureLoad = new spriteLoadder();
@@ -45,6 +48,7 @@ public class mapStorage {
         FifthLayerY = screenResY - 32 * 5;
         waterTime = 0;
         waterNow = false;
+        globalWater = false;
     }
 
 
@@ -55,26 +59,24 @@ public class mapStorage {
                 MapReturn.add(TextureLoad.GetLoadMapText(2, 0));
                 MapReturn.get(i).setX(i * 32);
                 MapReturn.get(i).setY(FirstLayerY);
-                //System.out.println(MapReturn.get(i).getId());
             }
             if ((i >= FirstLayer) && (i < SecondLayer)) {
-
                 if (waterNow) {
                     MapReturn.add(TextureLoad.GetLoadMapText(15, 12));
                     MapReturn.get(i).setX((i - FirstLayer) * 32);
                     MapReturn.get(i).setY(SecondLayerY);
-                    if (waterTime >= 11) {
+                    if (waterTime >= 8) {
                         waterTime = 0;
                         waterNow = false;
                     } else
                         waterTime++;
                 } else {
-                    if (((Math.random() + 17) < (Math.random() + 17)) && (waterTime > 7) && (waterTime < 11) && waterNow == false) {
+                    if (((Math.random() + 17) < (Math.random() + 17)) && (waterTime > 4) && (waterTime < 8) && waterNow == false) {
                         MapReturn.add(TextureLoad.GetLoadMapText(15, 12));
                         MapReturn.get(i).setX((i - FirstLayer) * 32);
                         MapReturn.get(i).setY(SecondLayerY);
                         waterNow = true;
-                        if (waterTime >= 11)
+                        if (waterTime >= 8)
                             waterTime = 0;
                         else
                             waterTime++;
@@ -82,15 +84,43 @@ public class mapStorage {
                         MapReturn.add(TextureLoad.GetLoadMapText(2, 0));
                         MapReturn.get(i).setX((i - FirstLayer) * 32);
                         MapReturn.get(i).setY(SecondLayerY);
-                        if (waterTime >= 11)
+                        if (waterTime >= 8)
                             waterTime = 0;
                         else
                             waterTime++;
                     }
                 }
             }
+            if(i==SecondLayer) {
+                waterNow = false;
+                waterTime = 0;
+            }
             if ((i >= SecondLayer) && i < (ThirdLayer)) {
-
+                if (!globalWater) {
+                    if (((Math.random() + 32) > (Math.random() + 32))&&(waterTime>17)) {
+                        MapReturn.add(TextureLoad.GetLoadMapText(15, 12));
+                        MapReturn.get(i).setX((i - SecondLayer) * 32);
+                        MapReturn.get(i).setY(ThirdLayerY);
+                        globalWater = true;
+                    } else {
+                        MapReturn.add(TextureLoad.GetLoadMapText(2, 0));
+                        MapReturn.get(i).setX((i - SecondLayer) * 32);
+                        MapReturn.get(i).setY(ThirdLayerY);
+                        globalWater = false;
+                        if (waterTime >= 17)
+                            waterTime = 0;
+                        else
+                            waterTime++;
+                    }
+                } else {
+                    MapReturn.add(TextureLoad.GetLoadMapText(15, 12));
+                    MapReturn.get(i).setX((i - SecondLayer) * 32);
+                    MapReturn.get(i).setY(ThirdLayerY);
+                    if (waterTime >= 17) {
+                        waterTime = 0;
+                        globalWater = false;
+                    }
+                }
             }
             if ((i >= ThirdLayer) && (i < FourthLayer)) {
 
