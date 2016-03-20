@@ -1,8 +1,6 @@
 package sample;
 
-/**
- * Created by verden on 28.2.16.
- */
+
 public class coordConverter {
     private double sizeScreenX;
     private double sizeScreenY;
