@@ -6,7 +6,7 @@ import javafx.scene.image.ImageView;
 
 
 public class spriteLoadder {
-    private final Image MainMAPTexture = new Image(getClass().getResourceAsStream("mario_main.png"));
+    private final Image MainMAPTexture = new Image(getClass().getResourceAsStream("/Textures/mario_main.png"));
     private int textSize = 32;
 
     public ImageView GetLoadMapText(int whichX, int whichY) {

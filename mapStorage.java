@@ -3,8 +3,6 @@ package sample;
 import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.regex.Matcher;
 
 
 public class mapStorage {
@@ -26,6 +24,7 @@ public class mapStorage {
     private int waterTime;
     private boolean waterNow;
     private boolean globalWater;
+    private int globalWaterTime;
 
     public mapStorage() {
         TextureLoad = new spriteLoadder();
@@ -45,9 +44,10 @@ public class mapStorage {
         SecondLayerY = screenResY - 32 * 2;
         ThirdLayerY = screenResY - 32 * 3;
         FourthLayerY = screenResY - 32 * 4;
-        FifthLayerY = screenResY - 32 * 5;
+        FifthLayerY = screenResY - 32 * 7;
         waterTime = 0;
         waterNow = false;
+        globalWaterTime = 0;
         globalWater = false;
     }
 
@@ -59,6 +59,7 @@ public class mapStorage {
                 MapReturn.add(TextureLoad.GetLoadMapText(2, 0));
                 MapReturn.get(i).setX(i * 32);
                 MapReturn.get(i).setY(FirstLayerY);
+                MapReturn.get(i).setId("1");
             }
             if ((i >= FirstLayer) && (i < SecondLayer)) {
                 if (waterNow) {
@@ -71,10 +72,12 @@ public class mapStorage {
                     } else
                         waterTime++;
                 } else {
-                    if (((Math.random() + 17) < (Math.random() + 17)) && (waterTime > 4) && (waterTime < 8) && waterNow == false) {
+                    if (((Math.random() + 17) < (Math.random() + 17)) && (waterTime > 4) && (
+                        waterTime < 8) && waterNow == false) {
                         MapReturn.add(TextureLoad.GetLoadMapText(15, 12));
                         MapReturn.get(i).setX((i - FirstLayer) * 32);
                         MapReturn.get(i).setY(SecondLayerY);
+                        MapReturn.get(i).setId("2");
                         waterNow = true;
                         if (waterTime >= 8)
                             waterTime = 0;
@@ -84,6 +87,7 @@ public class mapStorage {
                         MapReturn.add(TextureLoad.GetLoadMapText(2, 0));
                         MapReturn.get(i).setX((i - FirstLayer) * 32);
                         MapReturn.get(i).setY(SecondLayerY);
+                        MapReturn.get(i).setId("1");
                         if (waterTime >= 8)
                             waterTime = 0;
                         else
@@ -91,75 +95,106 @@ public class mapStorage {
                     }
                 }
             }
-            if(i==SecondLayer) {
+            if (i == SecondLayer) {
                 waterNow = false;
                 waterTime = 0;
             }
             if ((i >= SecondLayer) && i < (ThirdLayer)) {
-                if (!globalWater) {
-                    if (((Math.random() + 32) > (Math.random() + 32))&&(waterTime>17)) {
+                if (waterNow) {
+                    MapReturn.add(TextureLoad.GetLoadMapText(15, 12));
+                    MapReturn.get(i).setX((i - SecondLayer) * 32);
+                    MapReturn.get(i).setY(ThirdLayerY);
+                    MapReturn.get(i).setId("3");
+                    if (waterTime >= 15) {
+                        waterNow = false;
+                        waterTime = 0;
+                    } else {
+                        waterNow = true;
+                        waterTime++;
+                    }
+                } else {
+                    if ((Math.random() + 37 > Math.random() + 37) && (waterTime > 11) && (waterNow
+                        == false)) {
                         MapReturn.add(TextureLoad.GetLoadMapText(15, 12));
                         MapReturn.get(i).setX((i - SecondLayer) * 32);
                         MapReturn.get(i).setY(ThirdLayerY);
-                        globalWater = true;
+                        MapReturn.get(i).setId("3");
+                        waterNow = true;
+                        waterTime++;
                     } else {
                         MapReturn.add(TextureLoad.GetLoadMapText(2, 0));
                         MapReturn.get(i).setX((i - SecondLayer) * 32);
                         MapReturn.get(i).setY(ThirdLayerY);
-                        globalWater = false;
-                        if (waterTime >= 17)
-                            waterTime = 0;
-                        else
-                            waterTime++;
-                    }
-                } else {
-                    MapReturn.add(TextureLoad.GetLoadMapText(15, 12));
-                    MapReturn.get(i).setX((i - SecondLayer) * 32);
-                    MapReturn.get(i).setY(ThirdLayerY);
-                    if (waterTime >= 17) {
-                        waterTime = 0;
-                        globalWater = false;
+                        MapReturn.get(i).setId("1");
+                        waterNow = false;
+                        waterTime++;
                     }
                 }
             }
+            if (i == ThirdLayer) {
+                waterNow = false;
+                waterTime = 0;
+                globalWaterTime = 0;
+            }
             if ((i >= ThirdLayer) && (i < FourthLayer)) {
-
+                if (MapReturn.get(i - layerLN).getId().contentEquals("3")) {
+                    MapReturn.add(TextureLoad.GetLoadMapText(15, 12));
+                    MapReturn.get(i).setX((i - ThirdLayer) * 32);
+                    MapReturn.get(i).setY(FourthLayerY);
+                    MapReturn.get(i).setId("3");
+                    waterTime++;
+                    globalWaterTime++;
+                } else {
+                    if (waterNow) {
+                        MapReturn.add(TextureLoad.GetLoadMapText(15, 12));
+                        MapReturn.get(i).setX((i - ThirdLayer) * 32);
+                        MapReturn.get(i).setY(FourthLayerY);
+                        MapReturn.get(i).setId("2");
+                        if (waterTime < 9) {
+                            waterTime++;
+                            waterNow = true;
+                        } else {
+                            waterNow = false;
+                            waterTime = 0;
+                        }
+                    } else {
+                        if (MapReturn.get(i - layerLN - 1).getId().contains("3")) {
+                            waterNow = false;
+                            waterTime = 0;
+                        }
+                        if ((Math.random() + 25 < Math.random() + 25) && (waterNow == false) && (
+                            waterTime > 6)) {
+                            MapReturn.add(TextureLoad.GetLoadMapText(15, 12));
+                            MapReturn.get(i).setX((i - ThirdLayer) * 32);
+                            MapReturn.get(i).setY(FourthLayerY);
+                            MapReturn.get(i).setId("2");
+                            waterNow = true;
+                            waterTime++;
+                        } else {
+                            MapReturn.add(TextureLoad.GetLoadMapText(3, 0));
+                            MapReturn.get(i).setX((i - ThirdLayer) * 32);
+                            MapReturn.get(i).setY(FourthLayerY);
+                            MapReturn.get(i).setId("1");
+                            waterNow = false;
+                            waterTime++;
+                        }
+                    }
+                }
             }
             if ((i >= FourthLayer) && (i < FifthLayer)) {
-
+                if (MapReturn.get(i - layerLN * 2).getId().contains("3")) {
+                    MapReturn.add(TextureLoad.GetLoadMapText(7, 0));
+                    MapReturn.get(i).setX((i - FourthLayer) * 32);
+                    MapReturn.get(i).setY(FifthLayerY);
+                    MapReturn.get(i).setId("5");
+                } else {
+                    MapReturn.add(TextureLoad.GetLoadMapText(8, 10));
+                    MapReturn.get(i).setX((i - FourthLayer) * 32);
+                    MapReturn.get(i).setY(FifthLayerY);
+                    MapReturn.get(i).setId("5");
+                }
             }
-
         }
-
-        /*
-        for (int i = 0; i < FifthLayer; i = i + 1) {
-            if (i < FirstLayer) {
-                MapReturn.add(TextureLoad.GetLoadMapText(2, 0));
-                MapReturn.get(i).setX(i * 32);
-                MapReturn.get(i).setY(568);
-            }
-            if ((i >= FirstLayer) && (i < SecondLayer)) {
-                MapReturn.add(TextureLoad.GetLoadMapText(2, 0));
-                MapReturn.get(i).setX((i - FirstLayer) * 32);
-                MapReturn.get(i).setY(536);
-            }
-            if ((i >= SecondLayer) && i < (ThirdLayer)) {
-                MapReturn.add(TextureLoad.GetLoadMapText(3, 0));
-                MapReturn.get(i).setX((i - SecondLayer) * 32);
-                MapReturn.get(i).setY(504);
-            }
-            if ((i >= ThirdLayer) && (i < FourthLayer)) {
-                MapReturn.add(TextureLoad.GetLoadMapText(3, 0));
-                MapReturn.get(i).setX((i - ThirdLayer) * 32);
-                MapReturn.get(i).setY(472);
-            }
-            if ((i >= FourthLayer) && (i < FifthLayer)) {
-                MapReturn.add(TextureLoad.GetLoadMapText(3, 0));
-                MapReturn.get(i).setX((i - FourthLayer) * 32);
-                MapReturn.get(i).setY(440);
-            }
-        }*/
-
 
         return MapReturn;
     }
