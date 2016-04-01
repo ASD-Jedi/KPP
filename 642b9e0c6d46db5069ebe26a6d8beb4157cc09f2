@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_20c5ca5a",
+        "filename": "Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1007803
+      },
+      "writtenOn": "2016-04-01T21:41:33Z",
+      "side": 1,
+      "message": "Create the variable, don\u0027t use the constants",
+      "range": {
+        "startLine": 11,
+        "startChar": 31,
+        "endLine": 11,
+        "endChar": 34
+      },
+      "revId": "642b9e0c6d46db5069ebe26a6d8beb4157cc09f2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_00a1a6a9",
+        "filename": "Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1007803
+      },
+      "writtenOn": "2016-04-01T21:41:33Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 52
+      },
+      "revId": "642b9e0c6d46db5069ebe26a6d8beb4157cc09f2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_c0aa9e85",
+        "filename": "Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1007803
+      },
+      "writtenOn": "2016-04-01T21:41:33Z",
+      "side": 1,
+      "message": "Use the normal title for all scenes",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 50
+      },
+      "revId": "642b9e0c6d46db5069ebe26a6d8beb4157cc09f2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_a0af9a93",
+        "filename": "spriteLoadder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1007803
+      },
+      "writtenOn": "2016-04-01T21:41:33Z",
+      "side": 1,
+      "message": "by.bsuir.alex.shulyak",
+      "range": {
+        "startLine": 1,
+        "startChar": 8,
+        "endLine": 1,
+        "endChar": 14
+      },
+      "revId": "642b9e0c6d46db5069ebe26a6d8beb4157cc09f2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_8095b641",
+        "filename": "spriteLoadder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1007803
+      },
+      "writtenOn": "2016-04-01T21:41:33Z",
+      "side": 1,
+      "message": "Classes start with the main letter",
+      "range": {
+        "startLine": 8,
+        "startChar": 12,
+        "endLine": 8,
+        "endChar": 26
+      },
+      "revId": "642b9e0c6d46db5069ebe26a6d8beb4157cc09f2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_6092b259",
+        "filename": "spriteLoadder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1007803
+      },
+      "writtenOn": "2016-04-01T21:41:33Z",
+      "side": 1,
+      "message": "mainMapTexture",
+      "range": {
+        "startLine": 9,
+        "startChar": 24,
+        "endLine": 9,
+        "endChar": 38
+      },
+      "revId": "642b9e0c6d46db5069ebe26a6d8beb4157cc09f2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_409fae5f",
+        "filename": "spriteLoadder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1007803
+      },
+      "writtenOn": "2016-04-01T21:41:33Z",
+      "side": 1,
+      "message": "getLoadMapText",
+      "range": {
+        "startLine": 12,
+        "startChar": 20,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "642b9e0c6d46db5069ebe26a6d8beb4157cc09f2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
