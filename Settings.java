@@ -1,5 +1,5 @@
 package sample;
-//
+
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -10,112 +10,110 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
-import java.awt.*;
+import java.awt.GraphicsEnvironment;
+import java.awt.GraphicsDevice;
 
 public class Settings {
-    private int Hight;
-    private int Wight;
+    private int height;
+    private int width;
     private int screenH;
     private int screenW;
-    private Controller MainLogic;
+    private Controller mainLogic;
     private Pane local;
-    private Rectangle baccker;
+    private Rectangle backgroundLocal;
     private Button setter;
-    private Label ResLabel;
-    private Label ScaleLabel;
-    private ComboBox<String> Resolution;
-    private ComboBox<String> Scale;
-
-    private void interfaceInit() {
-        baccker.setHeight(400);
-        baccker.setWidth(200);
-        baccker.setX(0);
-        baccker.setY(0);
-        baccker.setFill(Paint.valueOf("#BFBFBF"));
-
-        ResLabel.setLayoutX(55);
-        ResLabel.setLayoutY(10);
-        ResLabel.setPrefSize(200, 20);
-        ResLabel.setText("Set Resolution");
-        ResLabel.setTextFill(Paint.valueOf("Black"));
-        ResLabel.setTextAlignment(TextAlignment.CENTER);
-
-        setter.setText("Accept Settings");
-        setter.setPrefSize(130, 20);
-        setter.setTranslateX(30);
-        setter.setTranslateY(350);
-
-        Resolution.getItems().addAll(
-                "640x480",
-                "800x600",
-                "1024x768",
-                "1280x720",
-                "1366x768"
-        );
-        Resolution.setPrefSize(150, 30);
-        Resolution.setTranslateX(30);
-        Resolution.setTranslateY(40);
-
-    }
+    private Label resLabel;
+    private ComboBox<String> resolutionBox;
 
     public Settings() {
         local = new Pane();
-        baccker = new Rectangle();
-        setter = new Button();
-        ResLabel = new Label();
-        ScaleLabel = new Label();
-        Resolution = new ComboBox<>();
-        Scale = new ComboBox<>();
-        MainLogic = new Controller();
-        GraphicsDevice getRes = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        mainLogic = new Controller();
+        GraphicsDevice getRes =
+            GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         screenH = getRes.getDisplayMode().getHeight();
         screenW = getRes.getDisplayMode().getWidth();
     }
 
-    public Scene SettingsScene(Stage edit) {
+    private void backgroundInit() {
+        backgroundLocal = new Rectangle();
+        backgroundLocal.setHeight(400);
+        backgroundLocal.setWidth(200);
+        backgroundLocal.setX(0);
+        backgroundLocal.setY(0);
+        backgroundLocal.setFill(Paint.valueOf("#BFBFBF"));
+    }
+
+    private void resLabelInit() {
+        resLabel = new Label();
+        resLabel.setLayoutX(55);
+        resLabel.setLayoutY(10);
+        resLabel.setPrefSize(200, 20);
+        resLabel.setText("Set resolution");
+        resLabel.setTextFill(Paint.valueOf("Black"));
+        resLabel.setTextAlignment(TextAlignment.CENTER);
+    }
+
+    private void setterInit() {
+        setter = new Button();
+        setter.setText("Accept Settings");
+        setter.setPrefSize(130, 20);
+        setter.setTranslateX(30);
+        setter.setTranslateY(350);
+    }
+
+    private void resolutionBoxInit() {
+        resolutionBox = new ComboBox<>();
+        resolutionBox.getItems().addAll("800x600", "1024x768", "1280x720", "1366x768");
+        resolutionBox.setPrefSize(150, 30);
+        resolutionBox.setTranslateX(30);
+        resolutionBox.setTranslateY(40);
+    }
+
+    private void interfaceInit() {
+        backgroundInit();
+        resLabelInit();
+        setterInit();
+        resolutionBoxInit();
+    }
+
+    public Scene settingsScene(Stage edit) {
         interfaceInit();
         setter.setOnAction(event -> {
-            if (Resolution.getValue() != null) {
-                switch (Resolution.getValue()) {
-                    case "640x480":
-                        Wight = 640;
-                        Hight = 480;
-                        break;
+            if (resolutionBox.getValue() != null) {
+                switch (resolutionBox.getValue()) {
                     case "800x600":
-                        Wight = 800;
-                        Hight = 600;
+                        width = 800;
+                        height = 600;
                         break;
                     case "1024x768":
-                        Wight = 1024;
-                        Hight = 768;
+                        width = 1024;
+                        height = 768;
                         break;
                     case "1280x720":
-                        Wight = 1280;
-                        Hight = 720;
+                        width = 1280;
+                        height = 720;
                         break;
                     case "1366x768":
-                        Wight = 1366;
-                        Hight = 768;
+                        width = 1366;
+                        height = 768;
                         break;
                     default:
                         System.out.println("Doesn't work");
                         break;
                 }
             } else {
-                Wight = 800;
-                Hight = 600;
+                width = 800;
+                height = 600;
             }
-            MainLogic.sizeSet(Hight, Wight);
-
-            edit.setScene(MainLogic.sceneController());
+            mainLogic.sizeSet(height, width);
             edit.setX(screenH / 2 - 800 / 2);
             edit.setY(screenW / 2 - 600 / 2);
-            edit.setWidth(Wight);
-            edit.setHeight(Hight);
-            edit.show();
+            edit.setWidth(width);
+            edit.setHeight(height);
+            mainLogic.sceneController(edit);
         });
 
-        local.getChildren().addAll(baccker, ResLabel, setter, Resolution);
+        local.getChildren().addAll(backgroundLocal, resLabel, setter, resolutionBox);
         Scene chose = new Scene(local);
         return chose;
     }

@@ -6,10 +6,12 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        primaryStage.setHeight(400);
-        primaryStage.setWidth(200);
+    private int heightBegin = 400;
+    private int widthBegin = 200;
+
+    @Override public void start(Stage primaryStage) throws Exception {
+        primaryStage.setHeight(heightBegin);
+        primaryStage.setWidth(widthBegin);
 
         primaryStage.setResizable(false);
         Settings set = new Settings();
@@ -19,7 +21,7 @@ public class Main extends Application {
         System.out.println(primaryStage.getWidth());
         primaryStage.setTitle("River - Settings");
 
-        primaryStage.setScene(set.SettingsScene(primaryStage));
+        primaryStage.setScene(set.settingsScene(primaryStage));
         primaryStage.show();
     }
 
@@ -29,4 +31,3 @@ public class Main extends Application {
     }
 }
 
-//
