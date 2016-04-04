@@ -7,6 +7,17 @@ import java.util.ArrayList;
 
 public class MapStorage {
     private SpriteLoadder textureLoad;
+    private static final int blockSize = 32;
+    private static final int spriteGroundX = 2;
+    private static final int spriteGroundY = 0;
+    private static final int spriteWaterX = 15;
+    private static final int spriteWaterY = 12;
+    private static final int spriteBrickX = 7;
+    private static final int spriteBrickY = 0;
+    private static final int spriteBlankX = 8;
+    private static final int spriteBlankY = 10;
+    private static final int spriteGrassX = 3;
+    private static final int spriteGrassY = 0;
     private int layerLenght;
     private int firstLayerX;
     private int secondLayerX;
@@ -54,15 +65,15 @@ public class MapStorage {
         ArrayList<ImageView> mapReturn = new ArrayList<>();
         for (int i = 0; i < globalLn; i = i + 1) {
             if (i < firstLayerX) {
-                mapReturn.add(textureLoad.getLoadMapText(2, 0));
-                mapReturn.get(i).setX(i * 32);
+                mapReturn.add(textureLoad.getLoadMapText(spriteGroundX, spriteGroundY));
+                mapReturn.get(i).setX(i * blockSize);
                 mapReturn.get(i).setY(firstLayerY);
                 mapReturn.get(i).setId("1");
             }
             if ((i >= firstLayerX) && (i < secondLayerX)) {
                 if (waterNow) {
-                    mapReturn.add(textureLoad.getLoadMapText(15, 12));
-                    mapReturn.get(i).setX((i - firstLayerX) * 32);
+                    mapReturn.add(textureLoad.getLoadMapText(spriteWaterX, spriteWaterY));
+                    mapReturn.get(i).setX((i - firstLayerX) * blockSize);
                     mapReturn.get(i).setY(secondLayerY);
                     if (waterTime >= 8) {
                         waterTime = 0;
@@ -72,8 +83,8 @@ public class MapStorage {
                 } else {
                     if (((Math.random() + 17) < (Math.random() + 17)) && (waterTime > 4) && (
                         waterTime < 8) && waterNow == false) {
-                        mapReturn.add(textureLoad.getLoadMapText(15, 12));
-                        mapReturn.get(i).setX((i - firstLayerX) * 32);
+                        mapReturn.add(textureLoad.getLoadMapText(spriteWaterX, spriteWaterY));
+                        mapReturn.get(i).setX((i - firstLayerX) * blockSize);
                         mapReturn.get(i).setY(secondLayerY);
                         mapReturn.get(i).setId("2");
                         waterNow = true;
@@ -82,8 +93,8 @@ public class MapStorage {
                         else
                             waterTime++;
                     } else {
-                        mapReturn.add(textureLoad.getLoadMapText(2, 0));
-                        mapReturn.get(i).setX((i - firstLayerX) * 32);
+                        mapReturn.add(textureLoad.getLoadMapText(spriteGroundX, spriteGroundY));
+                        mapReturn.get(i).setX((i - firstLayerX) * blockSize);
                         mapReturn.get(i).setY(secondLayerY);
                         mapReturn.get(i).setId("1");
                         if (waterTime >= 8)
@@ -99,8 +110,8 @@ public class MapStorage {
             }
             if ((i >= secondLayerX) && i < (thirdLayerX)) {
                 if (waterNow) {
-                    mapReturn.add(textureLoad.getLoadMapText(15, 12));
-                    mapReturn.get(i).setX((i - secondLayerX) * 32);
+                    mapReturn.add(textureLoad.getLoadMapText(spriteWaterX, spriteWaterY));
+                    mapReturn.get(i).setX((i - secondLayerX) * blockSize);
                     mapReturn.get(i).setY(thirdLayerY);
                     mapReturn.get(i).setId("3");
                     if (waterTime >= 15) {
@@ -113,15 +124,15 @@ public class MapStorage {
                 } else {
                     if ((Math.random() + 37 > Math.random() + 37) && (waterTime > 11) && (waterNow
                         == false)) {
-                        mapReturn.add(textureLoad.getLoadMapText(15, 12));
-                        mapReturn.get(i).setX((i - secondLayerX) * 32);
+                        mapReturn.add(textureLoad.getLoadMapText(spriteWaterX, spriteWaterY));
+                        mapReturn.get(i).setX((i - secondLayerX) * blockSize);
                         mapReturn.get(i).setY(thirdLayerY);
                         mapReturn.get(i).setId("3");
                         waterNow = true;
                         waterTime++;
                     } else {
-                        mapReturn.add(textureLoad.getLoadMapText(2, 0));
-                        mapReturn.get(i).setX((i - secondLayerX) * 32);
+                        mapReturn.add(textureLoad.getLoadMapText(spriteGroundX, spriteGroundY));
+                        mapReturn.get(i).setX((i - secondLayerX) * blockSize);
                         mapReturn.get(i).setY(thirdLayerY);
                         mapReturn.get(i).setId("1");
                         waterNow = false;
@@ -136,16 +147,16 @@ public class MapStorage {
             }
             if ((i >= thirdLayerX) && (i < fourthLayerX)) {
                 if (mapReturn.get(i - layerLenght).getId().contentEquals("3")) {
-                    mapReturn.add(textureLoad.getLoadMapText(15, 12));
-                    mapReturn.get(i).setX((i - thirdLayerX) * 32);
+                    mapReturn.add(textureLoad.getLoadMapText(spriteWaterX, spriteWaterY));
+                    mapReturn.get(i).setX((i - thirdLayerX) * blockSize);
                     mapReturn.get(i).setY(fourthLayerY);
                     mapReturn.get(i).setId("3");
                     waterTime++;
                     globalWaterTime++;
                 } else {
                     if (waterNow) {
-                        mapReturn.add(textureLoad.getLoadMapText(15, 12));
-                        mapReturn.get(i).setX((i - thirdLayerX) * 32);
+                        mapReturn.add(textureLoad.getLoadMapText(spriteWaterX, spriteWaterY));
+                        mapReturn.get(i).setX((i - thirdLayerX) * blockSize);
                         mapReturn.get(i).setY(fourthLayerY);
                         mapReturn.get(i).setId("2");
                         if (waterTime < 9) {
@@ -162,15 +173,15 @@ public class MapStorage {
                         }
                         if ((Math.random() + 25 < Math.random() + 25) && (waterNow == false) && (
                             waterTime > 6)) {
-                            mapReturn.add(textureLoad.getLoadMapText(15, 12));
-                            mapReturn.get(i).setX((i - thirdLayerX) * 32);
+                            mapReturn.add(textureLoad.getLoadMapText(spriteWaterX, spriteWaterY));
+                            mapReturn.get(i).setX((i - thirdLayerX) * blockSize);
                             mapReturn.get(i).setY(fourthLayerY);
                             mapReturn.get(i).setId("2");
                             waterNow = true;
                             waterTime++;
                         } else {
-                            mapReturn.add(textureLoad.getLoadMapText(3, 0));
-                            mapReturn.get(i).setX((i - thirdLayerX) * 32);
+                            mapReturn.add(textureLoad.getLoadMapText(spriteGrassX, spriteGrassY));
+                            mapReturn.get(i).setX((i - thirdLayerX) * blockSize);
                             mapReturn.get(i).setY(fourthLayerY);
                             mapReturn.get(i).setId("1");
                             waterNow = false;
@@ -181,19 +192,18 @@ public class MapStorage {
             }
             if ((i >= fourthLayerX) && (i < fifthLayerX)) {
                 if (mapReturn.get(i - layerLenght * 2).getId().contains("3")) {
-                    mapReturn.add(textureLoad.getLoadMapText(7, 0));
-                    mapReturn.get(i).setX((i - fourthLayerX) * 32);
+                    mapReturn.add(textureLoad.getLoadMapText(spriteBrickX, spriteBrickY));
+                    mapReturn.get(i).setX((i - fourthLayerX) * blockSize);
                     mapReturn.get(i).setY(fifthLayerY);
                     mapReturn.get(i).setId("5");
                 } else {
-                    mapReturn.add(textureLoad.getLoadMapText(8, 10));
-                    mapReturn.get(i).setX((i - fourthLayerX) * 32);
+                    mapReturn.add(textureLoad.getLoadMapText(spriteBlankX, spriteBlankY));
+                    mapReturn.get(i).setX((i - fourthLayerX) * blockSize);
                     mapReturn.get(i).setY(fifthLayerY);
                     mapReturn.get(i).setId("5");
                 }
             }
         }
-
         return mapReturn;
     }
 }

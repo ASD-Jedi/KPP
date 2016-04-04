@@ -24,6 +24,7 @@ public class Controller {
     private PerspectiveCamera gameCamera;
     private int directWalk;
     private boolean cameraGo;
+    private static final int walkSpeed = 5;
 
     public Controller() {
         rootPane = new Pane();
@@ -105,15 +106,15 @@ public class Controller {
         globalStage.show();
     }
 
-    private void cameraMove(int direction){
-        if(direction==1){
-            gameCamera.setTranslateY(gameCamera.getTranslateY() + 10);
-        }else if(direction==2){
-            gameCamera.setTranslateY(gameCamera.getTranslateY() - 10);
-        }else if(direction==3){
-            gameCamera.setTranslateX(gameCamera.getTranslateX() + 10);
-        }else if(direction==4){
-            gameCamera.setTranslateX(gameCamera.getTranslateX() - 10);
+    private void cameraMove(int direction) {
+        if (direction == 1) {
+            gameCamera.setTranslateY(gameCamera.getTranslateY() + walkSpeed);
+        } else if (direction == 2) {
+            gameCamera.setTranslateY(gameCamera.getTranslateY() - walkSpeed);
+        } else if (direction == 3) {
+            gameCamera.setTranslateX(gameCamera.getTranslateX() + walkSpeed);
+        } else if (direction == 4) {
+            gameCamera.setTranslateX(gameCamera.getTranslateX() - walkSpeed);
         }
     }
 
