@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_ef4abfc4",
+        "filename": "Main/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1007672
+      },
+      "writtenOn": "2016-05-01T18:40:07Z",
+      "side": 1,
+      "message": "коменты лучше удалять",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 31
+      },
+      "revId": "1bda7bcb5312d3dad922194f9258ec77a6331ff0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_cf45bbb3",
+        "filename": "Main/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1007672
+      },
+      "writtenOn": "2016-05-01T18:40:07Z",
+      "side": 1,
+      "message": "много пустого места",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "1bda7bcb5312d3dad922194f9258ec77a6331ff0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_af1397b7",
+        "filename": "MapClass/MapEditor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1007672
+      },
+      "writtenOn": "2016-05-01T18:40:07Z",
+      "side": 1,
+      "message": "больной ублюдок. нет, исправлять не нужно, но ты поехавший",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 133
+      },
+      "revId": "1bda7bcb5312d3dad922194f9258ec77a6331ff0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
