@@ -1,6 +1,5 @@
 package Main;
 
-import GameProcess.Game;
 import Interface.StartMenu;
 import MapClass.MapCreator;
 import javafx.application.Application;

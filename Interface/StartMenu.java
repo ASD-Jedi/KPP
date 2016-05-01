@@ -9,7 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-
+//
 public class StartMenu {
     private Label gameName = new Label();
     private Label sinlglePlayerLabel = new Label();
@@ -27,9 +27,6 @@ public class StartMenu {
     private Game mainGame = new Game();
     public void menuShow(Stage primaryStage, Scene back, Pane getPane){
         interfaceInit();
-        //Pane localTest = getPane;
-        //Pane localMain = new Pane();
-
         getPane.getChildren().addAll(gameName, sinlglePlayerLabel, multiPlayerLabel, exitLabel);
         sinlglePlayerLabel.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -38,7 +35,6 @@ public class StartMenu {
                 mainGame.startGame();
             }
         });
-
     }
 
     private void interfaceInit(){

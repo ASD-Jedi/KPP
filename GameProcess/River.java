@@ -53,11 +53,7 @@ public class River extends Pane {
                         upFly = false;
                         jumpState -= flightSpeed;
                     }
-
                 } else {
-
-
-
                     this.setTranslateY(this.getTranslateY() + flightSpeed);
                     jumpState -= flightSpeed;
                     if (jumpState < 0) {
@@ -65,7 +61,6 @@ public class River extends Pane {
                         infly = false;
                         this.setTranslateY(initialCordsY);
                     }
-
                 }
             }
         } else {
