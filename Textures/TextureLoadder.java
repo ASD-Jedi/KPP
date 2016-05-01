@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
-//
+
 public class TextureLoadder {
     private final Image mainTexture = new Image(getClass().getResourceAsStream("mario_main.png"));
     private int textureSize = 32;

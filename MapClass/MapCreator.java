@@ -4,7 +4,7 @@ package MapClass;
 import Textures.TextureLoadder;
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.layout.Pane;
-//
+
 public class MapCreator {
     MapEditor localMap = new MapEditor();
     TextureLoadder loadder = new TextureLoadder();

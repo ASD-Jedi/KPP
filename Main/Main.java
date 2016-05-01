@@ -12,7 +12,6 @@ public class Main extends Application {
     private Pane root = new Pane();
     private MapCreator mainMap = new MapCreator();
     private Scene localScene = new Scene(root);
-
     private int windowsSizeX = 960;
     private int windowsSizeY = 540;
     private StartMenu startMenu = new StartMenu();
@@ -28,12 +27,7 @@ public class Main extends Application {
         primaryStage.setScene(localScene);
         primaryStage.show();
         startMenu.menuShow(primaryStage, localScene, root);
-        //mainGame.gameClassInit(primaryStage);
-        //mainGame.startGame();
     }
-
-
-
 
     public static void main(String[] args) {
         launch(args);

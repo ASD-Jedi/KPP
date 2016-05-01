@@ -9,7 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-//
+
 public class StartMenu {
     private Label gameName = new Label();
     private Label sinlglePlayerLabel = new Label();

@@ -6,7 +6,6 @@ import com.sun.javafx.geom.Vec2d;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
-
 public class River extends Pane {
     private TextureLoadder localLoadder = new TextureLoadder();
     private CollisionControl collisions = new CollisionControl();

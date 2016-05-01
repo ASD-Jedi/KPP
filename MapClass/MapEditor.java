@@ -1,7 +1,7 @@
 package MapClass;
 
 import com.sun.javafx.geom.Vec2d;
-//
+
 public class MapEditor {
     private int[][] map1_1 = {
             {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},

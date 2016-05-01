@@ -12,7 +12,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-
 public class Game {
     private Stage localStageControl;
     private MapCreator mainMapCreator = new MapCreator();
