@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_e00cdeed",
+        "filename": "TextureLoadder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1007672
+      },
+      "writtenOn": "2016-05-15T18:57:23Z",
+      "side": 1,
+      "message": "длинная строка",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 113
+      },
+      "revId": "bb243047014eaf1ddbcfbd25abf963471ed44466",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_c011da05",
+        "filename": "TextureLoadder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1007672
+      },
+      "writtenOn": "2016-05-15T18:57:23Z",
+      "side": 1,
+      "message": "длинная строка",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 119
+      },
+      "revId": "bb243047014eaf1ddbcfbd25abf963471ed44466",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
